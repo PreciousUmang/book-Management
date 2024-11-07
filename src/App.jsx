@@ -8,7 +8,13 @@ import { books } from './utils/mockData'
 function App() {
   return (
     <>
-      <BookList booksData = {books}/>
+      <div className='my-4'>
+        <h2 className='font-semibold text-lg my-4'>Search Books</h2>
+        <input type="text" className='border rounded-s-lg p-3' />
+        <button className='border rounded-e-lg p-3'>Search</button>
+      </div>
+
+      <BookList booksData={books} />
     </>
   )
 }

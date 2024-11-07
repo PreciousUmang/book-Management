@@ -8,7 +8,7 @@ function Book(props) {
                 <h2 className="font-bold text-lg">  {props.bookDetails.title}</h2>
                 <p className="italic text-right text-sm">- By {props.bookDetails.author}</p>
                 {/* <p>Published on : {props.bookDetails.publishedDate}</p> */}
-                <p className="text-justify">{props.bookDetails.description}</p>
+                <p className="text-justify text-sm">{props.bookDetails.description}</p>
             </div>
         </div>
     )
