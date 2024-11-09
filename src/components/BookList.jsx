@@ -4,7 +4,7 @@ function BookList(props) {
     return (
         <div className="flex flex-col md:flex-row flex-wrap items-center justify-center">
             {props.booksData.map(data =>
-                <Book bookDetails={data} />
+                <Book key = {data.id} bookDetails={data} />
             )}
         </div>
     )
