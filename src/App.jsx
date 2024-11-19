@@ -1,30 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import BookList from './components/BookList'
-import { books } from './utils/mockData'
+import { useState } from 'react';
+import './App.css';
+import Header from './components/Header';
+import BookList from './components/BookList';
+import { books } from './utils/mockData'; // Ensure mockData is properly defined
+import Search from './components/Search';
 
 function App() {
+  const [search, setSearch] = useState('');
+  const [filteredBooks, setFilteredBooks] = useState(books);
 
-  const [search, setSearch] = useState("")
-  const [filteredBooks, setFilteredBooks] = useState(books)
-
-  function handleClick() {
-    const filterBooks = books.filter(book => book.title.toUpperCase().includes(search.toUpperCase()))
-    setFilteredBooks(filterBooks)
-  }
+  const handleSearch = () => {
+    const filtered = books.filter((book) =>
+      book.title.toUpperCase().includes(search.toUpperCase())
+    );
+    setFilteredBooks(filtered);
+  };
 
   return (
     <>
-      <div className='my-4'>
-        <h2 className='font-semibold text-lg my-4'>Search Books</h2>
-        <input type="text" className='border rounded-s-lg p-3' onChange={(e) => setSearch(e.target.value)} />
-        <button className='border rounded-e-lg p-3' onClick={handleClick}>Search</button>
+      <Header />
+      <div className="p-4">
+        <Search setSearch={setSearch} handleSearch={handleSearch} />
+        <BookList booksData={filteredBooks} />
       </div>
-      <BookList booksData={filteredBooks} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
